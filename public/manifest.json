@@ -1,0 +1,22 @@
+{
+  "short_name": "HC Test",
+  "name": "HC Test",
+  "icons": [
+    {
+      "src": "/images/start1.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/start2.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "viewer.html",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#3367D6",    
+  "description": "Test"
+}

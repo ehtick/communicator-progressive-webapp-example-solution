@@ -5,6 +5,7 @@ const router = express.Router();
 router.get('/models', apiController.getModels);
 router.get('/scs/:modelname', apiController.getSCS);
 router.get('/png/:modelname', apiController.getPNG);
+router.get('/filesToCache', apiController.getAllCacheFiles);
 
 module.exports = router;
 

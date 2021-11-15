@@ -1,6 +1,6 @@
-# communicator-progressive-webapp-example
+# communicator-progressive-webapp-example-solution
 
-Starter Project for the Progressive Webapp Training
+Finished App for Progressive Webapp Training
 
 ## Requirements
 

@@ -181,7 +181,7 @@
 
 .tool-icon,
 .submenu-icon {
-  background: url(images/toolbarsprite.png?v=2016U1) no-repeat top left;
+  background: url(images/toolbarsprite.png) no-repeat top left;
 }
 
 /* PASTSE SPRITESHEET FROM  https://draeton.github.io/stitches/ here

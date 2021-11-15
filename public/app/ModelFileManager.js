@@ -10,6 +10,8 @@ class ModelFileManager {
 
         let _this = this;
 
+        this._isOnline =  navigator.onLine;
+        
         this._modelTable = new Tabulator("#modeltable", {
             layout: "fitColumns",
             responsiveLayout: "hide",
@@ -28,13 +30,35 @@ class ModelFileManager {
             ],
         });
         
+        setInterval(async function () {
+            if ( _this._isOnline != navigator.onLine)
+            {
+                _this._isOnline = navigator.onLine;
+                await _this._getModelList();
+            }
+        }, 1000);
+
         this._getModelList();       
     }
 
 
     async _getModelList() {
-        let res = await fetch(serveraddress + '/api/models');
-        let data = await res.json();
+
+        let data;
+        if (navigator.onLine)
+        {
+            let res = await fetch(serveraddress + '/api/models');
+            data = await res.json();
+        }
+        else
+        {
+            var models = await db.models.toArray();
+            data = [];
+            for (var i = 0; i < models.length; i++) {
+                if (models[i].scsdata)
+                    data.push(models[i].name);
+            }
+        }
 
         await this._updateModelTable(data);
 

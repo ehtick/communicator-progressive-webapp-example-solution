@@ -14,11 +14,17 @@ class ModelFileManager {
             layout: "fitColumns",
             responsiveLayout: "hide",
             rowClick: function(e,row) {
-                _this._loadNewModel(row.getData().name);
+                _this._loadNewModel(row.getData().id);
             },
             columns: [
                 { title: "", field: "image", formatter: "image", minWidth: 100, maxWidth: 100, formatterParams: { width: "90px", height: "70px" } },
-                { title: "Name", field: "name", formatter: "plaintext" }
+                { title: "Name", field: "id", formatter: "plaintext" },
+                {
+                    title: "Offline", field: "offline", maxWidth: 80, formatter: "tickCross", formatterParams: {
+                        allowEmpty: true,
+                        allowTruthy: true,
+                    }
+                },
             ],
         });
         
@@ -54,7 +60,7 @@ class ModelFileManager {
             }
             let imageurl = urlCreator.createObjectURL(imageblob);
                           
-            let prop = {image:imageurl, name: modelnames[i]};
+            let prop = {image:imageurl, id: modelnames[i], offline:(res && res.scsdata)};
             this._modelTable.addData([prop], false);
         }
     }
@@ -72,6 +78,8 @@ class ModelFileManager {
             await db.models.update(modelname, {
                 scsdata: scsblob,
             });
+            var row = this._modelTable.getRow(modelname);
+            row.update({offline:true});
         }
         else
         { 

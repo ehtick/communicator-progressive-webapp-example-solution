@@ -1,0 +1,1 @@
+communicator-progressive-webapp-example-solution

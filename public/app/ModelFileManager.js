@@ -52,9 +52,9 @@ class ModelFileManager {
         }
         else
         {
-            var models = await db.models.toArray();
+            let models = await db.models.toArray();
             data = [];
-            for (var i = 0; i < models.length; i++) {
+            for (let i = 0; i < models.length; i++) {
                 if (models[i].scsdata)
                     data.push(models[i].name);
             }

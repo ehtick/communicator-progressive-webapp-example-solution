@@ -59,8 +59,6 @@ function walk(dir, results) {
         });
     };
 
-    function replaceAll(string, search, replace) {
-    return string.split(search).join(replace);
 }
 
 function replaceAll(string, search, replace) {

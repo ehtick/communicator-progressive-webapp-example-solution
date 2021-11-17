@@ -44,22 +44,20 @@ function walk(dir, results) {
     var list = fs.readdirSync(dir);
     var pending = list.length;
     if (!pending) return;
-    list.forEach(function(file) {
-    file = path.resolve(dir, file);
-    var stat = fs.statSync(file);
-     if (stat && stat.isDirectory()) {
-          walk(file, results);
-              if (!--pending) return;
-            
-          } else {
-              if (file.indexOf("models") == -1)
-                    results.push(file);
+    list.forEach(function (file) {
+        file = path.resolve(dir, file);
+        var stat = fs.statSync(file);
+        if (stat && stat.isDirectory()) {
+            walk(file, results);
             if (!--pending) return;
-          }
-        });
-    };
 
+        } else {
+                results.push(file);
+            if (!--pending) return;
+        }
+    });
 }
+
 
 function replaceAll(string, search, replace) {
     return string.split(search).join(replace);
